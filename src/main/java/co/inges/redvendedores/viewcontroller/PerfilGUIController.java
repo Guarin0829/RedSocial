@@ -7,10 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,11 +17,19 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class PerfilGUIController implements Initializable {
 
+    Producto productoSeleccionado;
     ModelFactoryController modelFactoryController;
+    public ObservableList<Producto> getListaProductos() {
+        listaVendedores.clear(); // Limpiar la lista antes de agregar los vendedores
+        listaVendedores.addAll(modelFactoryController.obtenerVendedoresRedSocial());
+        return listaProductos;
+    }
 
     private Cola cola = new Cola();
     private ObservableList<Vendedor> listaVendedores = FXCollections.observableArrayList();
@@ -73,14 +78,57 @@ public class PerfilGUIController implements Initializable {
     private TableView<Producto> tablaProductosPerfil;
 
     @FXML
+    void ordenarProductosPorNombre(ActionEvent event) {
+        listaProductos.sort(Comparator.comparing(Producto::getNombre));
+
+    }
+
+
+    @FXML
     void actualizarProdcuto(ActionEvent event) {
-        actualizarTablaProductos();
+        Producto productoSeleccionado = tablaProductosPerfil.getSelectionModel().getSelectedItem();
+        if (productoSeleccionado != null) {
+            String nombre = nombreProducto.getText();
+            Categoria categoria = categoriaProducto.getValue();
+            double precio = Double.parseDouble(PrecioProducto.getText());
+            EstadoProducto estado = estadoProducto.getValue();
+
+            // Actualizar los datos del producto seleccionado
+            productoSeleccionado.setNombre(nombre);
+            productoSeleccionado.setCategoria(categoria);
+            productoSeleccionado.setPrecio(precio);
+            productoSeleccionado.setEstado(estado);
+            productoSeleccionado.setImagen(imagen); // Asegurarse de que 'imagen' contiene la ruta de la imagen seleccionada
+
+            // Actualizar la tabla de productos
+            tablaProductosPerfil.refresh();
+
+            // Guardar la red social actualizada en el archivo XML
+            modelFactoryController.guardarResourceXML();
+
+            // Limpiar los campos del formulario
+            Limpiar();
+
+            mostrarMensaje("El producto se ha actualizado con éxito.");
+        } else {
+            mostrarMensaje("Producto no seleccionado");
+        }
 
     }
 
     @FXML
     void buscarProducto(ActionEvent event) {
+        String nombre = nombreProducto.getText();
+        Categoria categoria = categoriaProducto.getValue();
+        String precioMinStr = PrecioProducto.getText();
+        String precioMaxStr = PrecioProducto.getText();
+        double precioMin = precioMinStr.isEmpty() ? 0 : Double.parseDouble(precioMinStr);
+        double precioMax = precioMaxStr.isEmpty() ? Double.MAX_VALUE : Double.parseDouble(precioMaxStr);
+        EstadoProducto estado = estadoProducto.getValue();
 
+        Predicate<Producto> predicado = co.inges.redvendedores.util.ProductoUtil.buscarPorTodo(nombre, categoria, precioMin, precioMax, estado);
+        ObservableList<Producto> productosFiltrados = listaProductos.filtered(predicado);
+        tablaProductosPerfil.setItems(productosFiltrados);
     }
 
     @FXML
@@ -103,12 +151,29 @@ public class PerfilGUIController implements Initializable {
 
     @FXML
     void eliminarProducto(ActionEvent event) {
+        Producto productoSeleccionado = tablaProductosPerfil.getSelectionModel().getSelectedItem();
+        if (productoSeleccionado != null) {
+            if (mostrarMensajeConfirmacion("¿Estás seguro de eliminar el producto?")) {
+                boolean productoEliminado = modelFactoryController.eliminarProducto(productoSeleccionado.getNombre());
+                if (productoEliminado) {
+                    listaProductos.remove(productoSeleccionado);
+                    Limpiar();
+                    mostrarMensaje("El producto se ha eliminado correctamente.");
+                } else {
+                    mostrarMensaje("El producto no se puede eliminar.");
+                }
+            }
+        } else {
+            mostrarMensaje("Producto no seleccionado.");
+        }
 
     }
 
     @FXML
     void limpiarEspacios(ActionEvent event) {
         Limpiar();
+        tablaProductosPerfil.getSelectionModel().clearSelection();
+        tablaProductosPerfil.setItems(getListaProductos());
 
     }
 
@@ -238,6 +303,25 @@ public class PerfilGUIController implements Initializable {
         categoriaProducto.setValue(null);
         PrecioProducto.setText("");
     }
+
+    private void mostrarMensaje(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Mensaje");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+    private boolean mostrarMensajeConfirmacion(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        return alert.showAndWait().filter(response -> response == ButtonType.OK).isPresent();
+    }
+
+
 
 
 

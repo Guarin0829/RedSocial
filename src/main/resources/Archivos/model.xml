@@ -27,9 +27,9 @@
    <void method="add">
     <object class="co.inges.redvendedores.model.Producto">
      <void property="categoria">
-      <object class="java.lang.Enum" id="Categoria0" method="valueOf">
+      <object class="java.lang.Enum" method="valueOf">
        <class>co.inges.redvendedores.model.Categoria</class>
-       <string>TECNOLOGIA</string>
+       <string>VEHICULO</string>
       </object>
      </void>
      <void property="estado">
@@ -39,29 +39,32 @@
       </object>
      </void>
      <void property="nombre">
-      <string>ee</string>
+      <string>Avion (motivo viaje)</string>
      </void>
      <void property="precio">
-      <double>2.0</double>
+      <double>45.0</double>
      </void>
     </object>
    </void>
    <void method="add">
     <object class="co.inges.redvendedores.model.Producto">
      <void property="categoria">
-      <object class="java.lang.Enum" method="valueOf">
+      <object class="java.lang.Enum" id="Categoria0" method="valueOf">
        <class>co.inges.redvendedores.model.Categoria</class>
-       <string>VEHICULO</string>
+       <string>TECNOLOGIA</string>
       </object>
      </void>
      <void property="estado">
-      <object idref="EstadoProducto0"/>
+      <object class="java.lang.Enum" method="valueOf">
+       <class>co.inges.redvendedores.model.EstadoProducto</class>
+       <string>CANCELADO</string>
+      </object>
      </void>
      <void property="nombre">
-      <string>Avion (motivo viaje)</string>
+      <string>x</string>
      </void>
      <void property="precio">
-      <double>69.0</double>
+      <double>3.0</double>
      </void>
     </object>
    </void>
