@@ -1,0 +1,20 @@
+1. Crear la clase "Usuario" para extender a las clases "Administrador" y "Vendedor".
+2. Crear la clase "Chat" que permita solucionar el problema de la clase "VendedorTest".
+    Evolución: Se creo la clase Chat y la Clase Mensaje, pendiente resolver el problema de la clase VendedorTest
+3. Consultar el problema del archivo descriptor "module-info.java"
+4. Preguntar de la rubrica, el iten diseño de la interfaz (grafo y general)
+5.Se agrega al module info java las siguientes lineas:
+   exports co.inges.redvendedores.viewcontroller; (ya que indicaba que habia un intento de acceso ilegal a una clase,
+   específicamente co.inges.redvendedores.viewcontroller.LoginGUIController, desde el módulo javafx.fxml.
+   La razón exacta es que el módulo javafx.fxml no puede acceder a la clase LoginGUIController
+   porque el módulo co.inges.redvendedores no exporta el paquete co.inges.redvendedores.viewcontroller;)
+   y tambien se agruega la linea:
+   opens co.inges.redvendedores.viewcontroller to javafx.fxml; (ya que el error indicaba que el módulo
+    co.inges.redvendedores no abre el paquete co.inges.redvendedores.viewcontroller al módulo javafx.fxml,
+    lo que impide que la clase FXMLLoader acceda a los campos privados de la clase controladora)
+
+
+6. Crear la clase Comentario (Es escrito por un Usuario sobre un Producto específico).
+7.Crear la clase enum EstadoProducto
+8. Crear la clase MeGusta (Es realizado por un Usuario hacia un Producto específico).
+10. Crear la clase Publicacion.

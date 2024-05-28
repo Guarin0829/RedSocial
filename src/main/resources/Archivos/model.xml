@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.8" class="java.beans.XMLDecoder">
+ <object class="co.inges.redvendedores.model.RedSocial" id="RedSocial0">
+  <void property="listaProductos">
+   <void method="add">
+    <object class="co.inges.redvendedores.model.Producto">
+     <void property="categoria">
+      <object class="java.lang.Enum" method="valueOf">
+       <class>co.inges.redvendedores.model.Categoria</class>
+       <string>HOGAR</string>
+      </object>
+     </void>
+     <void property="estado">
+      <object class="java.lang.Enum" method="valueOf">
+       <class>co.inges.redvendedores.model.EstadoProducto</class>
+       <string>VENDIDO</string>
+      </object>
+     </void>
+     <void property="nombre">
+      <string>q</string>
+     </void>
+     <void property="precio">
+      <double>2.0</double>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.inges.redvendedores.model.Producto">
+     <void property="categoria">
+      <object class="java.lang.Enum" id="Categoria0" method="valueOf">
+       <class>co.inges.redvendedores.model.Categoria</class>
+       <string>TECNOLOGIA</string>
+      </object>
+     </void>
+     <void property="estado">
+      <object class="java.lang.Enum" id="EstadoProducto0" method="valueOf">
+       <class>co.inges.redvendedores.model.EstadoProducto</class>
+       <string>PUBLICADO</string>
+      </object>
+     </void>
+     <void property="nombre">
+      <string>ee</string>
+     </void>
+     <void property="precio">
+      <double>2.0</double>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.inges.redvendedores.model.Producto">
+     <void property="categoria">
+      <object class="java.lang.Enum" method="valueOf">
+       <class>co.inges.redvendedores.model.Categoria</class>
+       <string>VEHICULO</string>
+      </object>
+     </void>
+     <void property="estado">
+      <object idref="EstadoProducto0"/>
+     </void>
+     <void property="nombre">
+      <string>Avion (motivo viaje)</string>
+     </void>
+     <void property="precio">
+      <double>69.0</double>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="listaVendedores">
+   <void method="add">
+    <object class="co.inges.redvendedores.model.Vendedor">
+     <void property="apellido">
+      <string>Curioso</string>
+     </void>
+     <void property="bandejaEntrada">
+      <object class="java.util.LinkedList"/>
+     </void>
+     <void property="contactos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="contrasena">
+      <string>1234</string>
+     </void>
+     <void property="direccion">
+      <string>Centro</string>
+     </void>
+     <void property="identificacion">
+      <string>1094967885</string>
+     </void>
+     <void property="muro">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="nombre">
+      <string>Jorge</string>
+     </void>
+     <void property="productos">
+      <object class="java.util.ArrayList">
+       <void method="add">
+        <object class="co.inges.redvendedores.model.Producto">
+         <void property="categoria">
+          <object idref="Categoria0"/>
+         </void>
+         <void property="estado">
+          <object idref="EstadoProducto0"/>
+         </void>
+         <void property="imagen">
+          <string>imagen</string>
+         </void>
+         <void property="nombre">
+          <string>Mouse</string>
+         </void>
+         <void property="precio">
+          <double>34000.0</double>
+         </void>
+        </object>
+       </void>
+      </object>
+     </void>
+     <void property="usuario">
+      <string>jorgito</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.inges.redvendedores.model.Vendedor">
+     <void property="apellido">
+      <string>Dora</string>
+     </void>
+     <void property="bandejaEntrada">
+      <object class="java.util.LinkedList"/>
+     </void>
+     <void property="contactos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="contrasena">
+      <string>1234</string>
+     </void>
+     <void property="direccion">
+      <string>Centro</string>
+     </void>
+     <void property="identificacion">
+      <string>1094967875</string>
+     </void>
+     <void property="muro">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="nombre">
+      <string>Debora</string>
+     </void>
+     <void property="productos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="usuario">
+      <string>debora</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.inges.redvendedores.model.Vendedor">
+     <void property="apellido">
+      <string>Sanchez</string>
+     </void>
+     <void property="bandejaEntrada">
+      <object class="java.util.LinkedList"/>
+     </void>
+     <void property="contactos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="contrasena">
+      <string>1234</string>
+     </void>
+     <void property="direccion">
+      <string>Centro</string>
+     </void>
+     <void property="identificacion">
+      <string>1094967385</string>
+     </void>
+     <void property="muro">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="nombre">
+      <string>Miguel</string>
+     </void>
+     <void property="productos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="usuario">
+      <string>miguel</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.inges.redvendedores.model.Vendedor">
+     <void property="apellido">
+      <string>c</string>
+     </void>
+     <void property="bandejaEntrada">
+      <object class="java.util.LinkedList"/>
+     </void>
+     <void property="contactos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="contrasena">
+      <string>a</string>
+     </void>
+     <void property="direccion">
+      <string>a</string>
+     </void>
+     <void property="identificacion">
+      <string>a</string>
+     </void>
+     <void property="muro">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="nombre">
+      <string>a</string>
+     </void>
+     <void property="productos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="usuario">
+      <string>a</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.inges.redvendedores.model.Vendedor">
+     <void property="apellido">
+      <string>lopez</string>
+     </void>
+     <void property="bandejaEntrada">
+      <object class="java.util.LinkedList"/>
+     </void>
+     <void property="contactos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="contrasena">
+      <string>dani</string>
+     </void>
+     <void property="direccion">
+      <string>a</string>
+     </void>
+     <void property="identificacion">
+      <string>123</string>
+     </void>
+     <void property="muro">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="nombre">
+      <string>daniela</string>
+     </void>
+     <void property="productos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="usuario">
+      <string>dani</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.inges.redvendedores.model.Vendedor">
+     <void property="apellido">
+      <string>Perez</string>
+     </void>
+     <void property="bandejaEntrada">
+      <object class="java.util.LinkedList"/>
+     </void>
+     <void property="contactos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="contrasena">
+      <string>123</string>
+     </void>
+     <void property="direccion">
+      <string>Armenia</string>
+     </void>
+     <void property="identificacion">
+      <string>8765</string>
+     </void>
+     <void property="muro">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="nombre">
+      <string>Juan</string>
+     </void>
+     <void property="productos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="usuario">
+      <string>Ju</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.inges.redvendedores.model.Vendedor">
+     <void property="apellido">
+      <string>e</string>
+     </void>
+     <void property="bandejaEntrada">
+      <object class="java.util.LinkedList"/>
+     </void>
+     <void property="contactos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="contrasena">
+      <string>e</string>
+     </void>
+     <void property="direccion">
+      <string>e</string>
+     </void>
+     <void property="identificacion">
+      <string>e</string>
+     </void>
+     <void property="muro">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="nombre">
+      <string>e</string>
+     </void>
+     <void property="productos">
+      <object class="java.util.ArrayList"/>
+     </void>
+     <void property="usuario">
+      <string>e</string>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>
